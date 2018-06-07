@@ -1,0 +1,59 @@
+	.file	"stackoverflow.c"
+	.text
+	.globl	func
+	.type	func, @function
+func:
+.LFB0:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	subq	$32, %rsp
+	movq	%fs:40, %rax
+	movq	%rax, -8(%rbp)
+	xorl	%eax, %eax
+	leaq	-32(%rbp), %rax
+	movabsq	$8031924123371070824, %rdx
+	movq	%rdx, (%rax)
+	movabsq	$4702111233923640434, %rcx
+	movq	%rcx, 8(%rax)
+	movabsq	$4702111234474983745, %rsi
+	movq	%rsi, 16(%rax)
+	movw	$65, 24(%rax)
+	leaq	-32(%rbp), %rax
+	movq	%rax, %rdi
+	call	puts
+	movq	-8(%rbp), %rax
+	xorq	%fs:40, %rax
+	je	.L2
+	call	__stack_chk_fail
+.L2:
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE0:
+	.size	func, .-func
+	.globl	main
+	.type	main, @function
+main:
+.LFB1:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movl	$0, %eax
+	call	func
+	movl	$0, %eax
+	popq	%rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE1:
+	.size	main, .-main
+	.ident	"GCC: (Ubuntu 4.8.4-2ubuntu1~14.04.3) 4.8.4"
+	.section	.note.GNU-stack,"",@progbits

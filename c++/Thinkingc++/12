@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+template<typename T> const T& min(const T& a, const T& b) {
+  return (a < b) ? a : b;
+}
+
+const char* min(const char* a, const char* b) {
+  return (strcmp(a, b) < 0) ? a : b;
+}
+
+
+
+int main(void) {
+
+  
+
+
+
+  return 0;
+}
